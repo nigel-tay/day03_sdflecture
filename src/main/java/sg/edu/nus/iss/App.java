@@ -2,8 +2,10 @@ package sg.edu.nus.iss;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -117,7 +119,22 @@ public class App
             System.out.println(line);
             line = br.readLine();
         }
-        fr2.close();
         br.close();
+        fr2.close();
+
+        // Example 3 - FileInputStream and DataInputStream - decorator
+        FileInputStream fis = new FileInputStream(dirPathFileName);
+        DataInputStream dis = new DataInputStream(fis);
+        // String result = dis.readUTF();
+        // System.out.println(result);
+        int disData = dis.read();
+
+        // -1 because integer, null only for string
+        while(disData != -1) { 
+            System.out.println((char) disData);
+            disData = dis.read();
+        }
+        dis.close();
+        fis.close();
     }
 }
