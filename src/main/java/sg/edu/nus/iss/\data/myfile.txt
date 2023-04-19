@@ -1,7 +1,5 @@
-Good morning
-Good afternoonGood night
-Good morning
 
+Good morning
 Good afternoon
 Good night
 Good evening

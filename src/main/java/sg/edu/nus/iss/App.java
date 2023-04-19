@@ -1,9 +1,11 @@
 package sg.edu.nus.iss;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -88,5 +90,34 @@ public class App
         dos2.close();
         fos2.close();
 
+        /**
+         * Reading from file example
+         */
+
+        /**
+         * We can also do it like this
+         * File file2 = new File(dirPath + File.separator + fileName);
+         * FileReader fr = new FileReader(file2);
+         */
+        FileReader fr = new FileReader(dirPathFileName);
+        int dataRead = fr.read();
+        while(dataRead != -1) {
+            System.out.print((char) dataRead);
+            dataRead = fr.read();
+        }
+        fr.close();
+        
+        // Example 2 - Using BufferedReader
+        FileReader fr2 = new FileReader(dirPathFileName);
+        BufferedReader br = new BufferedReader(fr2);
+        String line = "";
+        line = br.readLine();
+        
+        while(line != null) {
+            System.out.println(line);
+            line = br.readLine();
+        }
+        fr2.close();
+        br.close();
     }
 }
